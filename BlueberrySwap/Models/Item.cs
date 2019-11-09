@@ -1,18 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 namespace BlueberrySwap.Models
 {
-    public class Item
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("Item")]
+    public partial class Item
     {
-        public int Id { get; set; }
-        public String Title { get; set; }
-        public String Description { get; set; }
-        public Double Price { get; set; }
-        public int Status { get; set; } // 1-available, 0-not available
-        public DateTime CreatedAt { get; set; }
-        public int UserId { get; set; } // author
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Item()
+        {
+            Transactions = new HashSet<Transaction>();
+        }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int id { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        public string title { get; set; }
+
+        [StringLength(255)]
+        public string description { get; set; }
+
+        public int price { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        public string status { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        public string created_at { get; set; }
+
+        public int author_id { get; set; }
+
+        public virtual User User { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }
