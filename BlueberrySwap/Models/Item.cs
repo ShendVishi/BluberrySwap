@@ -31,6 +31,8 @@ namespace BlueberrySwap.Models
         [StringLength(255)]
         public string status { get; set; }
 
+        public int category { get; set; }
+
         [Required]
         [StringLength(255)]
         public string created_at { get; set; }

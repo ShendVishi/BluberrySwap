@@ -16,7 +16,15 @@ namespace BlueberrySwap.Models
 
         public int buyer_id { get; set; }
 
-        public int item_id { get; set; }
+        public int sellers_item_id { get; set; }
+
+        public string sellers_item_name { get; set; }
+
+        public int buyers_item_id { get; set; } // can be null
+
+        public string byers_item_name { get; set; }
+
+        public string cash_value_paid { get; set; } //can be null
 
         [Required]
         [StringLength(255)]

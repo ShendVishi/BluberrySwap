@@ -40,6 +40,15 @@ namespace BlueberrySwap.Models
         [StringLength(255)]
         public string address { get; set; }
 
+        [StringLength(5)]
+        public string zipCode { get; set; }
+        
+        [StringLength(2)]
+        public string state { get; set; }
+
+        [StringLength(255)]
+        public string country { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item> Items { get; set; }
 
